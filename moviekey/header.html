@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  background: #000;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  background: #0b0b0b;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #222;
+}
+
+.logo {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #e50914;
+}
+
+.search {
+  flex: 1;
+}
+
+.search input {
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+button {
+  background: #e50914;
+  color: #fff;
+  border: none;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="logo">Movie <span>Key</span></div>
+
+  <div class="search">
+    <input id="searchInput" type="text" placeholder="Search video...">
+  </div>
+
+  <button onclick="parent.searchPosts()">Search</button>
+  <button onclick="parent.goHome()">Home</button>
+</div>
+
+</body>
+</html>

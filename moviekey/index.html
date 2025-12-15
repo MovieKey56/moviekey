@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Key</title>
+
+<style>
+  body {
+    margin: 0;
+    background: #000;
+    font-family: Arial, sans-serif;
+  }
+
+  /* REMOVE IFRAME BORDER */
+  iframe {
+    width: 100%;
+    border: none;
+    display: block;
+  }
+
+  /* HEADER HEIGHT */
+  .header-frame {
+    height: 60px;
+  }
+
+  /* FOOTER HEIGHT */
+  .footer-frame {
+    height: 260px;
+  }
+
+  /* POST FRAME */
+  .post-frame {
+    min-height: 100vh;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<iframe 
+  src="header.html" 
+  class="header-frame" 
+  scrolling="no">
+</iframe>
+
+<!-- POSTS -->
+<iframe 
+  src="post.html" 
+  class="post-frame">
+</iframe>
+
+<!-- FOOTER -->
+<iframe 
+  src="footer.html" 
+  class="footer-frame" 
+  scrolling="no">
+</iframe>
+
+<!-- MAIN JS -->
+<script>
+/* SEARCH POSTS */
+function searchPosts() {
+  var headerFrame = document.querySelector('.header-frame');
+  var postFrame   = document.querySelector('.post-frame');
+
+  if (!headerFrame.contentWindow || !postFrame.contentWindow) return;
+
+  var searchInput = headerFrame.contentWindow.document
+    .getElementById("searchInput");
+
+  if (!searchInput) return;
+
+  var query = searchInput.value.toLowerCase().trim();
+
+  var posts = postFrame.contentWindow.document
+    .querySelectorAll(".post-card");
+
+  posts.forEach(function(post) {
+    var title = post.getAttribute("data-title");
+    if (!query || (title && title.includes(query))) {
+      post.style.display = "block";
+    } else {
+      post.style.display = "none";
+    }
+  });
+}
+
+/* HOME BUTTON – SHOW ALL */
+function goHome() {
+  var postFrame = document.querySelector('.post-frame');
+  if (!postFrame.contentWindow) return;
+
+  var posts = postFrame.contentWindow.document
+    .querySelectorAll(".post-card");
+
+  posts.forEach(function(post) {
+    post.style.display = "block";
+  });
+
+  // clear search input
+  var headerFrame = document.querySelector('.header-frame');
+  var input = headerFrame.contentWindow.document
+    .getElementById("searchInput");
+  if (input) input.value = "";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Key - Posts</title>
+
+<style>
+  body {
+    margin: 0;
+    background: #000;
+    font-family: Arial, sans-serif;
+  }
+
+  .post-container {
+    padding: 10px;
+  }
+
+  /* POST CARD */
+  .post-card {
+    margin-bottom: 18px;
+    background: #0b0b0b;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #222;
+    cursor: pointer;
+  }
+
+  .post-thumb {
+    width: 100%;
+    display: block;
+  }
+
+  .post-title {
+    padding: 8px 10px;
+    font-size: 14px;
+    color: #fff;
+    background: #111;
+  }
+
+  /* ========= VIDEO MODAL ========= */
+  .video-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 9999;
+  }
+
+  .video-modal iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #e50914;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    z-index: 10000;
+    cursor: pointer;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="post-container">
+
+  <!-- POST 1 -->
+  <div class="post-card"
+       data-title="post 1"
+       onclick="openVideo('//mxdrop.to/e/8ljk77r0b66nknq')">
+    <img src="https://pics-storage-1.ok.xxx/contents/albums/main/1920x1080/18000/18397/881334.jpg"
+         class="post-thumb">
+    <div class="post-title">Post 1</div>
+  </div>
+
+  <!-- POST 2 -->
+  <div class="post-card"
+       data-title="Post 2"
+       onclick="openVideo('//archive.org/embed/post-1_202509')">
+    <img src="https://ei.phncdn.com/videos/202502/18/464717525/original/(m=q4LRP7ZbeGNdHgaaaa)(mh=Cwi2FTufMXK6z_Xt)0.jpg"
+         class="post-thumb">
+    <div class="post-title">Post 2</div>
+  </div>
+
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal">
+  <button class="close-btn" onclick="closeVideo()">✕ Close</button>
+  <iframe id="videoFrame" allowfullscreen></iframe>
+</div>
+
+<script>
+function openVideo(url) {
+  var modal = document.getElementById("videoModal");
+  var frame = document.getElementById("videoFrame");
+  frame.src = url;
+  modal.style.display = "block";
+}
+
+function closeVideo() {
+  var modal = document.getElementById("videoModal");
+  var frame = document.getElementById("videoFrame");
+  frame.src = "";
+  modal.style.display = "none";
+}
+</script>
+
+</body>
+</html>
